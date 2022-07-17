@@ -4,9 +4,11 @@ const mongoose = require('mongoose');
 const stuffRoutes = require('./routes/stuff');
 const userRoutes = require('./routes/user');
 const path = require('path');
+const dotenv = require('dotenv');
 
 
-mongoose.connect('mongodb+srv://condordev:Mars12345@cluster0.6ygyw.mongodb.net/?retryWrites=true&w=majority').then(() => { console.log('connection reussi'); }).catch(err => { console.log('Connexion échoué'); })
+dotenv.config();
+mongoose.connect(process.env.MONGO_URL).then(() => { console.log('connection reussi'); }).catch(err => { console.log('Connexion échoué'); })
 
 
 app.use((req, res, next) => {
